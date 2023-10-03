@@ -68,9 +68,9 @@ class ParserModel(nn.Module):
         ###         linear_layer.weight
         ###
         ### Please see the following docs for support:
-        ###     Linear Layer: https://pytorch.org/docs/stable/nn.html#torch.nn.Linear
-        ###     Xavier Init: https://pytorch.org/docs/stable/nn.html#torch.nn.init.xavier_uniform_
-        ###     Dropout: https://pytorch.org/docs/stable/nn.html#torch.nn.Dropout
+        ###     Linear Layer: https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear
+        ###     Xavier Init: https://pytorch.org/docs/stable/nn.init.html#torch.nn.init.xavier_uniform_
+        ###     Dropout: https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html#torch.nn.Dropout
         ### START CODE HERE (~5 Lines)
         ### END CODE HERE
 
@@ -82,7 +82,7 @@ class ParserModel(nn.Module):
                 - `self.pretrained_embeddings` is a torch.nn.Embedding object that we defined in __init__
                 - Here `t` is a tensor where each row represents a list of features. Each feature is represented by an integer (input token).
                 - In PyTorch the Embedding object, e.g. `self.pretrained_embeddings`, allows you to
-                    go from an index to embedding. Please see the documentation (https://pytorch.org/docs/stable/nn.html#torch.nn.Embedding)
+                    go from an index to embedding. Please see the documentation (https://pytorch.org/docs/stable/generated/torch.nn.Embedding.html#torch.nn.Embedding)
                     to learn how to use `self.pretrained_embeddings` to extract the embeddings for your tensor `t`.
 
             @param t (Tensor): input tensor of tokens (batch_size, n_features)
@@ -99,8 +99,8 @@ class ParserModel(nn.Module):
         ###         https://pytorch.org/docs/stable/tensors.html#torch.Tensor.size
         ###
         ###  Please see the following docs for support:
-        ###     Embedding Layer: https://pytorch.org/docs/stable/nn.html#torch.nn.Embedding
-        ###     View: https://pytorch.org/docs/stable/tensors.html#torch.Tensor.view
+        ###     Embedding Layer: https://pytorch.org/docs/stable/generated/torch.nn.Embedding.html 
+        ###     View: https://pytorch.org/docs/stable/tensor_view.html
         ### START CODE HERE (~1-3 Lines)
         ### END CODE HERE
         return x
@@ -117,7 +117,7 @@ class ParserModel(nn.Module):
                     the `forward` function would called on `t` and the result would be stored in the `output` variable:
                         model = ParserModel()
                         output = model(t) # this calls the forward function
-                - For more details checkout: `https://pytorch.org/docs/stable/nn.html#torch.nn.Module.forward
+                - For more details checkout: https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module.forward
 
         @param t (Tensor): input tensor of tokens (batch_size, n_features)
 
@@ -135,7 +135,7 @@ class ParserModel(nn.Module):
         ### the loss function (torch.nn.CrossEntropyLoss) applies it more efficiently.
         ###
         ### Please see the following docs for support:
-        ###     ReLU: https://pytorch.org/docs/stable/nn.functional.html#torch.nn.functional.relu
+        ###     ReLU: https://pytorch.org/docs/stable/generated/torch.nn.functional.relu.html#torch.nn.functional.relu 
         ###  START CODE HERE (~3-5 lines)
         ### END CODE HERE
         return logits
