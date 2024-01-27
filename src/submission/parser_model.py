@@ -117,7 +117,7 @@ class ParserModel(nn.Module):
                     the `forward` function would called on `t` and the result would be stored in the `output` variable:
                         model = ParserModel()
                         output = model(t) # this calls the forward function
-                - For more details checkout: https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module.forward
+                - For more details checkout: https://pytorch.org/docs/stable/nn.html#torch.nn.Module.forward 
 
         @param t (Tensor): input tensor of tokens (batch_size, n_features)
 
