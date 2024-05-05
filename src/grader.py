@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
+import torch
+
 import unittest, random, sys, copy, argparse, inspect
 from graderUtil import graded, CourseTestRunner, GradedTestCase
+
 import numpy as np
 import os
 import traceback
@@ -9,7 +12,7 @@ import traceback
 import submission
 
 from submission.parser_utils import minibatches, load_and_preprocess_data
-import torch
+
 from datetime import datetime
 
 #############################################
