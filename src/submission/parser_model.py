@@ -51,10 +51,24 @@ class ParserModel(nn.Module):
         self.pretrained_embeddings.weight = nn.Parameter(torch.tensor(embeddings))
 
         ### TODO:
-        ###     1) Construct `self.embed_to_hidden` linear layer, initializing the weight matrix
-        ###         with the `nn.init.xavier_uniform_` function with `gain = 1` (default)
+        ###     1) Construct `self.embed_to_hidden` linear layer
         ###     2) Construct `self.dropout` layer.
-        ###     3) Construct `self.hidden_to_logits` linear layer, initializing the weight matrix
+        ###     3) Construct `self.hidden_to_logits` linear layer
+        ###
+        ### Please see the following docs for support:
+        ###     Linear Layer: https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear
+        ###     Dropout: https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html#torch.nn.Dropout
+        ### START CODE HERE (~3 Lines)
+        ### END CODE HERE
+
+        self.reset_parameters()
+
+    def reset_parameters(self) -> None:
+
+        ### TODO:
+        ###     1) Initialize `self.embed_to_hidden` linear layer's weight matrix
+        ###         with the `nn.init.xavier_uniform_` function with `gain = 1` (default)
+        ###     2) Initialize `self.hidden_to_logits` linear layer's weight matrix
         ###         with the `nn.init.xavier_uniform_` function with `gain = 1` (default)
         ###
         ### Note: Here, we use Xavier Uniform Initialization for our Weight initialization.
@@ -63,15 +77,16 @@ class ParserModel(nn.Module):
         ###         For more details checkout this great blogpost:
         ###             http://andyljones.tumblr.com/post/110998971763/an-explanation-of-xavier-initialization 
         ### Hints:
-        ###     - After you create a linear layer you can access the weight
-        ###       matrix via:
+        ###     - You can access the weight matrix via:
         ###         linear_layer.weight
+        ###     - Make sure you initialize the layers in the mentioned order above to comply with the autograder
         ###
         ### Please see the following docs for support:
         ###     Linear Layer: https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear
         ###     Xavier Init: https://pytorch.org/docs/stable/nn.init.html#torch.nn.init.xavier_uniform_
-        ###     Dropout: https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html#torch.nn.Dropout
-        ### START CODE HERE (~5 Lines)
+
+        pass
+        ### START CODE HERE (~2 Lines)
         ### END CODE HERE
 
     def embedding_lookup(self, t):

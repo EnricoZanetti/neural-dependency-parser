@@ -69,7 +69,7 @@ On each step, your parser will decide among the three transitions using a neural
     \end{center}
     To compute the loss for the training set, we average this $J(\theta)$ across all training examples.
 
-    \item \points{1c} In \texttt{src/submission/parser\_model.py} you will find skeleton code to implement this simple neural network using PyTorch. Complete the \texttt{\_\_init\_\_}, \texttt{embedding\_lookup} and \texttt{forward} functions to implement the model. Then complete the \texttt{train\_for\_epoch} function within the \texttt{src/submission/train.py} file. \newline
+    \item \points{1c} In \texttt{src/submission/parser\_model.py} you will find skeleton code to implement this simple neural network using PyTorch. Complete the \texttt{\_\_init\_\_}, \texttt{reset\_parameters}, \texttt{embedding\_lookup} and \texttt{forward} functions to implement the model. Then complete the \texttt{train\_for\_epoch} function within the \texttt{src/submission/train.py} file. \newline
    
     Finally execute \texttt{python run.py} within the \texttt{src/} subdirectory to train your model and compute predictions
     on test data from Penn Treebank (annotated with Universal Dependencies). Make sure to turn off debug setting by setting \texttt{debug=False} in the \texttt{main} function of \texttt{run.py}.
