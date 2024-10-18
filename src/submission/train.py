@@ -91,6 +91,22 @@ def train_for_epoch(parser, train_data, dev_data, optimizer, loss_func, batch_si
             ### Please see the following docs for support:
             ###     Optimizer Step: https://pytorch.org/docs/stable/optim.html#optimizer-step
             ### START CODE HERE (~4 lines)
+
+            # Step 1: Run train_x forward through model to produce logits
+            logits = parser.model(train_x)  
+
+            # Step 2: Compute the cross-entropy loss between logits and true labels (train_y)
+            cross_entropy_loss = loss_func(logits, train_y)
+
+            # Accumulate the loss for this batch
+            loss += cross_entropy_loss
+
+            # Step 3: Backpropagate the loss to compute gradients
+            cross_entropy_loss.backward()
+
+            # Step 4: Update model parameters by taking a step with the optimizer
+            optimizer.step()
+
             ### END CODE HERE
             prog.update(1)
             loss_meter.update(loss.item())

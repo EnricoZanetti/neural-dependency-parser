@@ -59,6 +59,11 @@ class ParserModel(nn.Module):
         ###     Linear Layer: https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear
         ###     Dropout: https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html#torch.nn.Dropout
         ### START CODE HERE (~3 Lines)
+
+        self.embed_to_hidden = nn.Linear(self.n_features * self.embed_size, self.hidden_size)
+        self.dropout = nn.Dropout(self.dropout_prob)
+        self.hidden_to_logits = nn.Linear(self.hidden_size, self.n_classes)
+
         ### END CODE HERE
 
         self.reset_parameters()
@@ -87,6 +92,8 @@ class ParserModel(nn.Module):
 
         pass
         ### START CODE HERE (~2 Lines)
+        self.embed_to_hidden.weight = nn.init.xavier_uniform_(self.embed_to_hidden.weight, gain=1)
+        self.hidden_to_logits.weight = nn.init.xavier_uniform_(self.hidden_to_logits.weight, gain=1)
         ### END CODE HERE
 
     def embedding_lookup(self, t):
@@ -117,6 +124,13 @@ class ParserModel(nn.Module):
         ###     Embedding Layer: https://pytorch.org/docs/stable/generated/torch.nn.Embedding.html 
         ###     View: https://pytorch.org/docs/stable/tensor_view.html
         ### START CODE HERE (~1-3 Lines)
+        
+        # Step 1: Use the pretrained embeddings to get the embeddings for the input tokens in `t`
+        embeddings = self.pretrained_embeddings(t)
+        
+        # Step 2: Reshape the embeddings from (batch_size, n_features, embed_size) to (batch_size, n_features * embed_size)
+        x = embeddings.view(embeddings.size(0), -1)
+        
         ### END CODE HERE
         return x
 
@@ -151,6 +165,23 @@ class ParserModel(nn.Module):
         ###
         ### Please see the following docs for support:
         ###     ReLU: https://pytorch.org/docs/stable/generated/torch.nn.functional.relu.html#torch.nn.functional.relu 
-        ###  START CODE HERE (~3-5 lines)
+        ### START CODE HERE (~3-5 lines)
+        
+        # Step 1: Lookup embeddings for input tensor `t`.
+        embeddings = self.embedding_lookup(t)
+
+        # Step 2: Apply the linear layer that maps embeddings to hidden layer (`embed_to_hidden`).
+        linear_layer = self.embed_to_hidden(embeddings)
+
+        # Step 3: Apply ReLU non-linearity to the output of the linear layer to get hidden units.
+        hidden_units = nn.functional.relu(linear_layer)
+
+        # Step 4: Apply dropout regularization to prevent overfitting.
+        dropout_layer = self.dropout(hidden_units)
+
+        # Step 5: Apply final linear layer (`hidden_to_logits`) to get the logits (raw scores before softmax).
+        logits = self.hidden_to_logits(dropout_layer)
+
         ### END CODE HERE
+
         return logits
