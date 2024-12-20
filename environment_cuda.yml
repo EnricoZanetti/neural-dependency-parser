@@ -1,4 +1,4 @@
-name: XCS224N_CUDA
+name: dependency-parser-CUDA
 channels:
   - defaults
   - conda-forge

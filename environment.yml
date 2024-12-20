@@ -1,4 +1,4 @@
-name: XCS224N
+name: dependency-parser
 channels:
   - defaults
   - conda-forge
