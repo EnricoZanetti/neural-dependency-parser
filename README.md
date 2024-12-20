@@ -28,16 +28,6 @@ conda env create -f environment.yml
 conda activate dependency-parser
 ```
 
-### Editable Installation
-
-Install the package in editable mode for easier development:
-
-```bash
-pip install -e .
-```
-
-This allows you to modify the source code and use the changes without reinstallation.
-
 ## How to Run the Code
 
 ## Step 1: Prepare Your Dataset
@@ -50,13 +40,13 @@ This allows you to modify the source code and use the changes without reinstalla
 Run the following command to train the parser model:
 
 ```bash
-python src/run.py --device <device>
+python run.py --device <device>
 ```
 
 #### Example (using GPU):
 
 ```bash
-python src/run.py --device gpu
+python run.py --device gpu
 ```
 
 #### **Key Parameters**
